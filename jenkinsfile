@@ -1,13 +1,12 @@
-node('GOL,'){
-    stage ('scm') {
+node('GOL,') {
+    stage('scm') {
         git 'https://github.com/kotidba4/openmrs-esm-styleguide.git'
-      stage('build')
-      sh 'mvn clean package'
-	  }
-      stage('postbuild')
-      {
-          junit '**/TEST-*.xml'
-          archive '**/*.war' 
-      }
+    }
+    stage('build') {
+        sh 'mvn clean package'
+    }
+    stage('postbuild') {
+        junit '**/TEST-*.xml'
+        archive '**/*.war'
     }
 }
